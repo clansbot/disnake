@@ -19,7 +19,6 @@ from .common_bot_base import CommonBotBase
 from .context import Context
 from .core import GroupMixin
 from .custom_warnings import MessageContentPrefixWarning
-from .help import DefaultHelpCommand, HelpCommand
 from .view import StringView
 
 if TYPE_CHECKING:
@@ -96,21 +95,12 @@ def _is_submodule(parent: str, child: str) -> bool:
     return parent == child or child.startswith(parent + ".")
 
 
-class _DefaultRepr:
-    def __repr__(self) -> str:
-        return "<default-help-command>"
-
-
-_default: Any = _DefaultRepr()
-
-
 class BotBase(CommonBotBase, GroupMixin):
     def __init__(
         self,
         command_prefix: Optional[
             Union[PrefixType, Callable[[Self, Message], MaybeCoro[PrefixType]]]
         ] = None,
-        help_command: Optional[HelpCommand] = _default,
         description: Optional[str] = None,
         *,
         strip_after_prefix: bool = False,
@@ -157,14 +147,8 @@ class BotBase(CommonBotBase, GroupMixin):
         self._before_invoke: Optional[CoroFunc] = None
         self._after_invoke: Optional[CoroFunc] = None
 
-        self._help_command: Optional[HelpCommand] = None
         self.description: str = inspect.cleandoc(description) if description else ""
         self.strip_after_prefix: bool = strip_after_prefix
-
-        if help_command is _default:
-            self.help_command = DefaultHelpCommand()
-        else:
-            self.help_command = help_command
 
     # internal helpers
 
@@ -407,25 +391,6 @@ class BotBase(CommonBotBase, GroupMixin):
                 if isinstance(cmd, GroupMixin):
                     cmd.recursively_remove_all_commands()
                 self.remove_command(cmd.name)
-
-    # help command stuff
-
-    @property
-    def help_command(self) -> Optional[HelpCommand]:
-        return self._help_command
-
-    @help_command.setter
-    def help_command(self, value: Optional[HelpCommand]) -> None:
-        if value is not None and not isinstance(value, HelpCommand):
-            raise TypeError("help_command must be a subclass of HelpCommand or None")
-
-        if self._help_command is not None:
-            self._help_command._remove_from_bot(self)
-
-        self._help_command = value
-
-        if value is not None:
-            value._add_to_bot(self)
 
     # command processing
 

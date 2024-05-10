@@ -22,7 +22,6 @@ from .cog import Cog
 if TYPE_CHECKING:
     from ._types import CoroFunc
     from .bot import AutoShardedBot, AutoShardedInteractionBot, Bot, InteractionBot
-    from .help import HelpCommand
 
     AnyBot = Union[Bot, AutoShardedBot, InteractionBot, AutoShardedInteractionBot]
 
@@ -250,9 +249,6 @@ class CommonBotBase(Generic[CogT]):
         if cog is None:
             return
 
-        help_command: Optional[HelpCommand] = getattr(self, "_help_command", None)
-        if help_command and help_command.cog is cog:
-            help_command.cog = None
         # NOTE: Should be covariant
         cog._eject(self)  # type: ignore
 

@@ -14,7 +14,6 @@ from typing import (
     Generator,
     Generic,
     List,
-    Literal,
     Optional,
     Protocol,
     Set,
@@ -194,12 +193,6 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         The name of the command.
     callback: :ref:`coroutine <coroutine>`
         The coroutine that is executed when the command is called.
-    help: Optional[:class:`str`]
-        The long help text for the command.
-    brief: Optional[:class:`str`]
-        The short help text for the command.
-    usage: Optional[:class:`str`]
-        A replacement for arguments in the default help text.
     aliases: Union[List[:class:`str`], Tuple[:class:`str`]]
         The list of aliases the command can be invoked under.
     enabled: :class:`bool`
@@ -218,10 +211,6 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         :exc:`.CommandError` should be used. Note that if the checks fail then
         :exc:`.CheckFailure` exception is raised to the :func:`.on_command_error`
         event.
-    description: :class:`str`
-        The message prefixed into the default help command.
-    hidden: :class:`bool`
-        If ``True``, the default help command does not show this in the help output.
     rest_is_raw: :class:`bool`
         If ``False`` and a keyword-only argument is provided then the keyword
         only argument is stripped and handled as if it was a regular argument
@@ -289,27 +278,12 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         self.callback = func
         self.enabled: bool = kwargs.get("enabled", True)
 
-        help_doc = kwargs.get("help")
-        if help_doc is not None:
-            help_doc = inspect.cleandoc(help_doc)
-        else:
-            help_doc = inspect.getdoc(func)
-            if isinstance(help_doc, bytes):
-                help_doc = help_doc.decode("utf-8")
-
-        self.help: Optional[str] = help_doc
-
-        self.brief: Optional[str] = kwargs.get("brief")
-        self.usage: Optional[str] = kwargs.get("usage")
         self.rest_is_raw: bool = kwargs.get("rest_is_raw", False)
         self.aliases: Union[List[str], Tuple[str]] = kwargs.get("aliases", [])
         self.extras: Dict[str, Any] = kwargs.get("extras", {})
 
         if not isinstance(self.aliases, (list, tuple)):
             raise TypeError("Aliases of a command must be a list or a tuple of strings.")
-
-        self.description: str = inspect.cleandoc(kwargs.get("description", ""))
-        self.hidden: bool = kwargs.get("hidden", False)
 
         try:
             checks = func.__commands_checks__
@@ -960,83 +934,8 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         """Optional[:class:`str`]: The name of the cog this command belongs to, if any."""
         return type(self.cog).__cog_name__ if self.cog is not None else None
 
-    @property
-    def short_doc(self) -> str:
-        """:class:`str`: Gets the "short" documentation of a command.
-
-        By default, this is the :attr:`.brief` attribute.
-        If that lookup leads to an empty string then the first line of the
-        :attr:`.help` attribute is used instead.
-        """
-        if self.brief is not None:
-            return self.brief
-        if self.help is not None:
-            return self.help.split("\n", 1)[0]
-        return ""
-
     def _is_typing_optional(self, annotation: Union[T, Optional[T]]) -> TypeGuard[Optional[T]]:
         return getattr(annotation, "__origin__", None) is Union and type(None) in annotation.__args__  # type: ignore
-
-    @property
-    def signature(self) -> str:
-        """:class:`str`: Returns a POSIX-like signature useful for help command output."""
-        if self.usage is not None:
-            return self.usage
-
-        params = self.clean_params
-        if not params:
-            return ""
-
-        result = []
-        for name, param in params.items():
-            greedy = isinstance(param.annotation, Greedy)
-            optional = False  # postpone evaluation of if it's an optional argument
-
-            # for typing.Literal[...], typing.Optional[typing.Literal[...]], and Greedy[typing.Literal[...]], the
-            # parameter signature is a literal list of it's values
-            annotation = param.annotation.converter if greedy else param.annotation
-            origin = getattr(annotation, "__origin__", None)
-            if not greedy and origin is Union:
-                none_cls = type(None)
-                union_args = annotation.__args__
-                optional = union_args[-1] is none_cls
-                if len(union_args) == 2 and optional:
-                    annotation = union_args[0]
-                    origin = getattr(annotation, "__origin__", None)
-
-            if origin is Literal:
-                name = "|".join(
-                    f'"{v}"' if isinstance(v, str) else str(v) for v in annotation.__args__
-                )
-            if param.default is not param.empty:
-                # We don't want None or '' to trigger the [name=value] case and instead it should
-                # do [name] since [name=None] or [name=] are not exactly useful for the user.
-                should_print = (
-                    param.default if isinstance(param.default, str) else param.default is not None
-                )
-                if should_print:
-                    result.append(
-                        f"[{name}={param.default}]"
-                        if not greedy
-                        else f"[{name}={param.default}]..."
-                    )
-                    continue
-                else:
-                    result.append(f"[{name}]")
-
-            elif param.kind == param.VAR_POSITIONAL:
-                if self.require_var_positional:
-                    result.append(f"<{name}...>")
-                else:
-                    result.append(f"[{name}...]")
-            elif greedy:
-                result.append(f"[{name}]...")
-            elif optional:
-                result.append(f"[{name}]")
-            else:
-                result.append(f"<{name}>")
-
-        return " ".join(result)
 
     async def can_run(self, ctx: Context) -> bool:
         """|coro|
@@ -1547,11 +1446,6 @@ def command(
 ) -> Any:
     """A decorator that transforms a function into a :class:`.Command`
     or if called with :func:`.group`, :class:`.Group`.
-
-    By default the ``help`` attribute is received automatically from the
-    docstring of the function and is cleaned up with the use of
-    ``inspect.cleandoc``. If the docstring is ``bytes``, then it is decoded
-    into :class:`str` using utf-8 encoding.
 
     All checks added using the :func:`.check` & co. decorators are added into
     the function. There is no way to supply your own checks through this

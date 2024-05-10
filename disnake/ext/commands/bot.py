@@ -26,7 +26,6 @@ if TYPE_CHECKING:
     from ._types import MaybeCoro
     from .bot_base import PrefixType
     from .flags import CommandSyncFlags
-    from .help import HelpCommand
 
 
 __all__ = (
@@ -167,13 +166,6 @@ class Bot(BotBase, InteractionBotBase, disnake.Client):
 
         This can be provided as a parameter at creation.
 
-    help_command: Optional[:class:`.HelpCommand`]
-        The help command implementation to use. This can be dynamically
-        set at runtime. To remove the help command pass ``None``. For more
-        information on implementing a help command, see :ref:`ext_commands_api_help_commands`.
-
-        This can be provided as a parameter at creation.
-
     owner_id: Optional[:class:`int`]
         The ID of the user that owns the bot. If this is not set and is then queried via
         :meth:`.is_owner` then it is fetched automatically using
@@ -224,7 +216,6 @@ class Bot(BotBase, InteractionBotBase, disnake.Client):
             command_prefix: Optional[
                 Union[PrefixType, Callable[[Self, Message], MaybeCoro[PrefixType]]]
             ] = None,
-            help_command: Optional[HelpCommand] = ...,
             description: Optional[str] = None,
             *,
             strip_after_prefix: bool = False,
@@ -276,7 +267,6 @@ class AutoShardedBot(BotBase, InteractionBotBase, disnake.AutoShardedClient):
             command_prefix: Optional[
                 Union[PrefixType, Callable[[Self, Message], MaybeCoro[PrefixType]]]
             ] = None,
-            help_command: Optional[HelpCommand] = ...,
             description: Optional[str] = None,
             *,
             strip_after_prefix: bool = False,
