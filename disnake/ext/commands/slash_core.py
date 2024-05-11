@@ -30,7 +30,6 @@ from .params import call_param_func, classify_autocompleter, expand_params
 
 if TYPE_CHECKING:
     from disnake.app_commands import Choices
-    from disnake.i18n import LocalizedOptional
 
     from .base_core import CommandCallback
 
@@ -141,10 +140,9 @@ class SubCommandGroup(InvokableApplicationCommand):
         func: CommandCallback,
         parent: InvokableSlashCommand,
         *,
-        name: LocalizedOptional = None,
+        name: Optional[str | Localized] = None,
         **kwargs: Any,
     ) -> None:
-        name_loc = Localized._cast(name, False)
         super().__init__(func, name=name_loc.string, **kwargs)
         self.parent: InvokableSlashCommand = parent
         self.children: Dict[str, SubCommand] = {}

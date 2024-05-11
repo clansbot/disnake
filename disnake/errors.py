@@ -34,7 +34,7 @@ __all__ = (
     "InteractionNotResponded",
     "ModalChainNotSupported",
     "InteractionNotEditable",
-    "LocalizationKeyError",
+    "LocalizationLookupError",
 )
 
 
@@ -416,17 +416,19 @@ class InteractionNotEditable(InteractionException):
         super().__init__("This interaction does not have a message to edit.")
 
 
-class LocalizationKeyError(DiscordException):
-    """Exception that's raised when a localization key lookup fails.
+class LocalizationLookupError(DiscordException):
+    """Exception that's raised when localization lookup fails.
 
     .. versionadded:: 2.5
 
     Attributes
     ----------
     key: :class:`str`
-        The localization key that couldn't be found.
+        The localization key.
+    locale: :class:`str`
+        The target locale.
     """
 
-    def __init__(self, key: str) -> None:
+    def __init__(self, key: str, locale: str) -> None:
         self.key: str = key
-        super().__init__(f"No localizations were found for the key '{key}'.")
+        super().__init__(f"No localizations were found for the key '{key}' and locale '{locale}'.")

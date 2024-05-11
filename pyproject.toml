@@ -312,6 +312,8 @@ exclude-modules = '''
 
 
 [tool.pyright]
+venv=".venv"
+venvPath="."
 typeCheckingMode = "strict"
 include = [
     "disnake",
