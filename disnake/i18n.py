@@ -18,6 +18,8 @@ from .errors import LocalizationLookupError
 __all__ = (
     "Localized",
     "Localised",
+    "LocalizedRequired",
+    "LocalizedOptional",
     "LocalizationProtocol",
     "LocalizationStore",
 )
@@ -53,6 +55,8 @@ class Localized:
         return src
 
 Localised = Localized
+LocalizedRequired = str | Localized
+LocalizedOptional = LocalizedRequired | None
 
 class LocalizationProtocol(ABC):
     """Manages a key-value mapping of localizations.
@@ -61,6 +65,11 @@ class LocalizationProtocol(ABC):
 
     .. versionadded:: 2.5
     """
+
+    # TODO: relax this requirement
+    @abstractmethod
+    def available_languages(self) -> list[str | Locale]:
+        raise NotImplementedError
 
     @abstractmethod
     def get(self, key: str, locale: str | Locale, *args: Any, **kwargs: Any) -> Optional[str]:

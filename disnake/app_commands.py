@@ -17,14 +17,14 @@ from .enums import (
     try_enum,
     try_enum_to_int,
 )
-from .i18n import Localized
+from .i18n import Localized, LocalizedOptional, LocalizedRequired
 from .permissions import Permissions
 from .utils import MISSING, _get_as_snowflake, _maybe_cast
 
 if TYPE_CHECKING:
     from typing_extensions import Self
 
-    from .i18n import LocalizationProtocol, LocalizationValue, LocalizedOptional, LocalizedRequired
+    from .i18n import LocalizationProtocol
     from .state import ConnectionState
     from .types.interactions import (
         ApplicationCommand as ApplicationCommandPayload,
@@ -40,7 +40,7 @@ if TYPE_CHECKING:
         Sequence["OptionChoice"],
         Sequence[ApplicationCommandOptionChoiceValue],
         Mapping[str, ApplicationCommandOptionChoiceValue],
-        Sequence[Localized[str]],
+        Sequence[Localized],
     ]
 
     APIApplicationCommand = Union["APIUserCommand", "APIMessageCommand", "APISlashCommand"]
@@ -111,9 +111,7 @@ class OptionChoice:
         name: LocalizedRequired,
         value: ApplicationCommandOptionChoiceValue,
     ) -> None:
-        name_loc = Localized._cast(name, True)
-        self.name: str = name_loc.string
-        self.name_localizations: LocalizationValue = name_loc.localizations
+        self.name: Localized = Localized.cast(name)
         self.value: ApplicationCommandOptionChoiceValue = value
 
     def __repr__(self) -> str:
@@ -123,39 +121,30 @@ class OptionChoice:
         return (
             self.name == other.name
             and self.value == other.value
-            and self.name_localizations == other.name_localizations
         )
 
-    def to_dict(self, *, locale: Optional[Locale] = None) -> ApplicationCommandOptionChoicePayload:
-        localizations = self.name_localizations.data
-
-        name: Optional[str] = None
-        # if `locale` provided, get localized name from dict
-        if locale is not None and localizations:
-            name = localizations.get(str(locale))
-
-        # fall back to default name if no locale or no localized name
-        if name is None:
-            name = self.name
-
+    def to_dict(self, *, store: LocalizationProtocol | None = None, locale: Optional[Locale] = None) -> ApplicationCommandOptionChoicePayload:
         payload: ApplicationCommandOptionChoicePayload = {
-            "name": name,
+            "name": self.name.default,
             "value": self.value,
         }
-        # if no `locale` provided, include all localizations in payload
-        if locale is None and localizations:
-            payload["name_localizations"] = localizations
+
+        if (key := self.name.key) and (store := store):
+            payload["name_localizations"] = {}
+
+            for lang in store.available_languages():
+                if localized := store.get(key, lang):
+                    lang_str = lang if isinstance(lang, str) else lang.value
+                    payload["name_localizations"][lang_str] = localized
+
         return payload
 
     @classmethod
     def from_dict(cls, data: ApplicationCommandOptionChoicePayload):
         return OptionChoice(
-            name=Localized(data["name"], data=data.get("name_localizations")),
+            name=Localized(data["name"]),
             value=data["value"],
         )
-
-    def localize(self, store: LocalizationProtocol) -> None:
-        self.name_localizations._link(store)
 
 
 class Option:
@@ -270,15 +259,9 @@ class Option:
         min_length: Optional[int] = None,
         max_length: Optional[int] = None,
     ) -> None:
-        name_loc = Localized._cast(name, True)
-        _validate_name(name_loc.string)
-        self.name: str = name_loc.string
-        self.name_localizations: LocalizationValue = name_loc.localizations
-
-        desc_loc = Localized._cast(description, False)
-        self.description: str = desc_loc.string or "-"
-        self.description_localizations: LocalizationValue = desc_loc.localizations
-
+        self.name: Localized = Localized.cast(name)
+        _validate_name(self.name.default)
+        self.description: Localized = Localized.cast(description or "-")
         self.type: OptionType = enum_if_int(OptionType, type) or OptionType.string
         self.required: bool = required
         self.options: List[Option] = options or []
@@ -312,7 +295,7 @@ class Option:
             else:
                 for c in choices:
                     if isinstance(c, Localized):
-                        c = OptionChoice(c, c.string)
+                        c = OptionChoice(c, c.default)
                     elif not isinstance(c, OptionChoice):
                         c = OptionChoice(str(c), c)
                     self.choices.append(c)
@@ -341,16 +324,14 @@ class Option:
             and self.max_value == other.max_value
             and self.min_length == other.min_length
             and self.max_length == other.max_length
-            and self.name_localizations == other.name_localizations
-            and self.description_localizations == other.description_localizations
         )
 
     @classmethod
     def from_dict(cls, data: ApplicationCommandOptionPayload) -> Option:
         return Option(
-            name=Localized(data["name"], data=data.get("name_localizations")),
+            name=Localized(data["name"]),
             description=Localized(
-                data.get("description"), data=data.get("description_localizations")
+                data.get("description")
             ),
             type=data.get("type"),
             required=data.get("required", False),
@@ -423,8 +404,8 @@ class Option:
 
     def to_dict(self) -> ApplicationCommandOptionPayload:
         payload: ApplicationCommandOptionPayload = {
-            "name": self.name,
-            "description": self.description,
+            "name": self.name.default,
+            "description": self.description.default,
             "type": try_enum_to_int(self.type),
         }
         if self.required:
@@ -450,19 +431,6 @@ class Option:
         if (loc := self.description_localizations.data) is not None:
             payload["description_localizations"] = loc
         return payload
-
-    def localize(self, store: LocalizationProtocol) -> None:
-        self.name_localizations._link(store)
-        self.description_localizations._link(store)
-
-        if (name_loc := self.name_localizations.data) is not None:
-            for value in name_loc.values():
-                _validate_name(value)
-
-        for c in self.choices:
-            c.localize(store)
-        for o in self.options:
-            o.localize(store)
 
 
 class ApplicationCommand(ABC):
@@ -516,9 +484,7 @@ class ApplicationCommand(ABC):
     ) -> None:
         self.type: ApplicationCommandType = enum_if_int(ApplicationCommandType, type)
 
-        name_loc = Localized._cast(name, True)
-        self.name: str = name_loc.string
-        self.name_localizations: LocalizationValue = name_loc.localizations
+        self.name: Localized = Localized.cast(name)
         self.nsfw: bool = False if nsfw is None else nsfw
 
         self.dm_permission: bool = True if dm_permission is None else dm_permission
@@ -562,13 +528,12 @@ class ApplicationCommand(ABC):
         return f"<{type(self).__name__} {attrs}>"
 
     def __str__(self) -> str:
-        return self.name
+        return self.name.default
 
     def __eq__(self, other) -> bool:
         return (
             self.type == other.type
             and self.name == other.name
-            and self.name_localizations == other.name_localizations
             and self.nsfw == other.nsfw
             and self._default_member_permissions == other._default_member_permissions
             # ignore `dm_permission` if comparing guild commands
@@ -582,10 +547,10 @@ class ApplicationCommand(ABC):
             and self._default_permission == other._default_permission
         )
 
-    def to_dict(self) -> EditApplicationCommandPayload:
+    def to_dict(self, *, store: LocalizationProtocol | None = None) -> EditApplicationCommandPayload:
         data: EditApplicationCommandPayload = {
             "type": try_enum_to_int(self.type),
-            "name": self.name,
+            "name": self.name.default,
             "dm_permission": self.dm_permission,
             "default_permission": True,
             "nsfw": self.nsfw,
@@ -595,13 +560,16 @@ class ApplicationCommand(ABC):
             data["default_member_permissions"] = None
         else:
             data["default_member_permissions"] = str(self._default_member_permissions)
-        if (loc := self.name_localizations.data) is not None:
-            data["name_localizations"] = loc
+
+        if (store := store) and (key := self.name.key):
+            data["name_localizations"] = {}
+
+            for lang in store.available_languages():
+                if localized := store.get(key, lang):
+                    lang_str = lang if isinstance(lang, str) else lang.value
+                    data["name_localizations"][lang_str] = localized
 
         return data
-
-    def localize(self, store: LocalizationProtocol) -> None:
-        self.name_localizations._link(store)
 
 
 class _APIApplicationCommandMixin:
@@ -702,7 +670,7 @@ class APIUserCommand(UserCommand, _APIApplicationCommandMixin):
             raise ValueError(f"Invalid payload type for UserCommand: {cmd_type}")
 
         self = cls(
-            name=Localized(data["name"], data=data.get("name_localizations")),
+            name=Localized(data["name"]),
             dm_permission=data.get("dm_permission") is not False,
             default_member_permissions=_get_as_snowflake(data, "default_member_permissions"),
             nsfw=data.get("nsfw"),
@@ -797,7 +765,7 @@ class APIMessageCommand(MessageCommand, _APIApplicationCommandMixin):
             raise ValueError(f"Invalid payload type for MessageCommand: {cmd_type}")
 
         self = cls(
-            name=Localized(data["name"], data=data.get("name_localizations")),
+            name=Localized(data["name"]),
             dm_permission=data.get("dm_permission") is not False,
             default_member_permissions=_get_as_snowflake(data, "default_member_permissions"),
             nsfw=data.get("nsfw"),
@@ -865,12 +833,9 @@ class SlashCommand(ApplicationCommand):
             default_member_permissions=default_member_permissions,
             nsfw=nsfw,
         )
-        _validate_name(self.name)
+        _validate_name(self.name.default)
 
-        desc_loc = Localized._cast(description, True)
-        self.description: str = desc_loc.string
-        self.description_localizations: LocalizationValue = desc_loc.localizations
-
+        self.description: Localized = Localized.cast(description)
         self.options: List[Option] = options or []
 
     def __eq__(self, other) -> bool:
@@ -878,7 +843,6 @@ class SlashCommand(ApplicationCommand):
             super().__eq__(other)
             and self.description == other.description
             and self.options == other.options
-            and self.description_localizations == other.description_localizations
         )
 
     def add_option(
@@ -918,7 +882,7 @@ class SlashCommand(ApplicationCommand):
 
     def to_dict(self) -> EditApplicationCommandPayload:
         res = super().to_dict()
-        res["description"] = self.description
+        res["description"] = self.description.default
         res["options"] = [o.to_dict() for o in self.options]
         if (loc := self.description_localizations.data) is not None:
             res["description_localizations"] = loc

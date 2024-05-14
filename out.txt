@@ -1,0 +1,293 @@
+/home/lena/Development/Projects/Python/disnake/disnake/activity.py
+  /home/lena/Development/Projects/Python/disnake/disnake/activity.py:115:25 - error: Could not access item in TypedDict
+    "start" is not a required key in "ActivityTimestamps", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/activity.py:129:25 - error: Could not access item in TypedDict
+    "end" is not a required key in "ActivityTimestamps", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/activity.py:156:27 - error: Could not access item in TypedDict
+    "large_image" is not a required key in "ActivityAssets", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/activity.py:171:27 - error: Could not access item in TypedDict
+    "small_image" is not a required key in "ActivityAssets", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/activity.py:570:20 - error: Could not access item in TypedDict
+    "large_image" is not a required key in "ActivityAssets", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+/home/lena/Development/Projects/Python/disnake/disnake/app_commands.py
+  /home/lena/Development/Projects/Python/disnake/disnake/app_commands.py:822:15 - error: "LocalizedRequired" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/app_commands.py:823:22 - error: "LocalizedRequired" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/app_commands.py:836:24 - error: Argument of type "Localized" cannot be assigned to parameter "name" of type "str" in function "_validate_name"
+    "Localized" is incompatible with "str" (reportArgumentType)
+  /home/lena/Development/Projects/Python/disnake/disnake/app_commands.py:838:30 - error: Cannot access attribute "_cast" for class "type[Localized]"
+    Attribute "_cast" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/app_commands.py:840:41 - error: "LocalizationValue" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/app_commands.py:854:15 - error: "LocalizedRequired" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/app_commands.py:855:22 - error: "LocalizedOptional" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/app_commands.py:896:17 - error: Cannot access attribute "localize" for class "object"
+    Attribute "localize" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/app_commands.py:897:30 - error: Cannot access attribute "name_localizations" for class "SlashCommand*"
+    Attribute "name_localizations" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/app_commands.py:904:15 - error: Cannot access attribute "localize" for class "Option"
+    Attribute "localize" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/app_commands.py:959:42 - error: No parameter named "data" (reportCallIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/app_commands.py:960:56 - error: No parameter named "data" (reportCallIssue)
+/home/lena/Development/Projects/Python/disnake/disnake/application_role_connection.py
+  /home/lena/Development/Projects/Python/disnake/disnake/application_role_connection.py:8:19 - error: "LocalizationValue" is unknown import symbol (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/application_role_connection.py:72:30 - error: Cannot access attribute "_cast" for class "type[Localized]"
+    Attribute "_cast" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/application_role_connection.py:76:30 - error: Cannot access attribute "_cast" for class "type[Localized]"
+    Attribute "_cast" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/application_role_connection.py:91:42 - error: No parameter named "data" (reportCallIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/application_role_connection.py:92:56 - error: No parameter named "data" (reportCallIssue)
+/home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_Str", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_AssetHash", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_Snowflake", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_Int", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_Bool", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_ListSnowflake", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_ListRole", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_MFALevel", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_VerificationLevel", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_ExplicitContentFilter", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_DefaultMessageNotificationLevel", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_ChannelType", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_IntegrationExpireBehaviour", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_VideoQualityMode", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_Overwrites", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_Datetime", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_ApplicationCommandPermissions", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_AutoModTriggerType", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_AutoModEventType", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_AutoModActions", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:403:26 - error: Could not access item in TypedDict
+    "old_value" is not a required key in "_AuditLogChange_AutoModTriggerMetadata", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_Str", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_AssetHash", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_Snowflake", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_Int", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_Bool", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_ListSnowflake", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_ListRole", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_MFALevel", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_VerificationLevel", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_ExplicitContentFilter", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_DefaultMessageNotificationLevel", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_ChannelType", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_IntegrationExpireBehaviour", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_VideoQualityMode", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_Overwrites", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_Datetime", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_ApplicationCommandPermissions", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_AutoModTriggerType", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_AutoModEventType", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_AutoModActions", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/audit_logs.py:413:25 - error: Could not access item in TypedDict
+    "new_value" is not a required key in "_AuditLogChange_AutoModTriggerMetadata", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+/home/lena/Development/Projects/Python/disnake/disnake/channel.py
+  /home/lena/Development/Projects/Python/disnake/disnake/channel.py:478:26 - error: Unnecessary "# type: ignore" comment
+  /home/lena/Development/Projects/Python/disnake/disnake/channel.py:1634:26 - error: Unnecessary "# type: ignore" comment
+  /home/lena/Development/Projects/Python/disnake/disnake/channel.py:2459:26 - error: Unnecessary "# type: ignore" comment
+  /home/lena/Development/Projects/Python/disnake/disnake/channel.py:2952:26 - error: Unnecessary "# type: ignore" comment
+  /home/lena/Development/Projects/Python/disnake/disnake/channel.py:4087:26 - error: Unnecessary "# type: ignore" comment
+  /home/lena/Development/Projects/Python/disnake/disnake/channel.py:4488:26 - error: Unnecessary "# type: ignore" comment
+/home/lena/Development/Projects/Python/disnake/disnake/client.py
+  /home/lena/Development/Projects/Python/disnake/disnake/client.py:470:13 - error: Cannot instantiate abstract class "LocalizationStore"
+    "LocalizationProtocol.available_languages" is not implemented (reportAbstractUsage)
+  /home/lena/Development/Projects/Python/disnake/disnake/client.py:2700:29 - error: Cannot access attribute "localize" for class "ApplicationCommand"
+    Attribute "localize" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/client.py:2748:21 - error: Cannot access attribute "localize" for class "ApplicationCommand"
+    Attribute "localize" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/client.py:2785:17 - error: Cannot access attribute "localize" for class "ApplicationCommand"
+    Attribute "localize" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/client.py:2886:29 - error: Cannot access attribute "localize" for class "ApplicationCommand"
+    Attribute "localize" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/client.py:2936:21 - error: Cannot access attribute "localize" for class "ApplicationCommand"
+    Attribute "localize" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/client.py:2977:17 - error: Cannot access attribute "localize" for class "ApplicationCommand"
+    Attribute "localize" is unknown (reportAttributeAccessIssue)
+/home/lena/Development/Projects/Python/disnake/disnake/components.py
+  /home/lena/Development/Projects/Python/disnake/disnake/components.py:209:49 - error: Could not access item in TypedDict
+    "emoji" is not a required key in "ButtonComponent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/components.py:588:44 - error: Could not access item in TypedDict
+    "emoji" is not a required key in "SelectOption", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+/home/lena/Development/Projects/Python/disnake/disnake/enums.py
+  /home/lena/Development/Projects/Python/disnake/disnake/enums.py:153:35 - error: "Self" cannot be used within a metaclass (a subclass of "type") (reportGeneralTypeIssues)
+  /home/lena/Development/Projects/Python/disnake/disnake/enums.py:156:39 - error: "Self" cannot be used within a metaclass (a subclass of "type") (reportGeneralTypeIssues)
+/home/lena/Development/Projects/Python/disnake/disnake/gateway.py
+  /home/lena/Development/Projects/Python/disnake/disnake/gateway.py:590:24 - error: Argument of type "Self@DiscordWebSocket" cannot be assigned to parameter "ws" of type "HeartbeatWebSocket" in function "__init__"
+    "DiscordWebSocket*" is incompatible with protocol "HeartbeatWebSocket"
+      "HEARTBEAT" is not defined as a ClassVar in protocol (reportArgumentType)
+  /home/lena/Development/Projects/Python/disnake/disnake/gateway.py:1014:57 - error: Argument of type "Self@DiscordVoiceWebSocket" cannot be assigned to parameter "ws" of type "HeartbeatWebSocket" in function "__init__"
+    "DiscordVoiceWebSocket*" is incompatible with protocol "HeartbeatWebSocket"
+      "HEARTBEAT" is not defined as a ClassVar in protocol (reportArgumentType)
+/home/lena/Development/Projects/Python/disnake/disnake/guild.py
+  /home/lena/Development/Projects/Python/disnake/disnake/guild.py:462:38 - error: Could not access item in TypedDict
+    "member" is not a required key in "GuildVoiceState", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/guild.py:621:27 - error: Could not access item in TypedDict
+    "large" is not a required key in "Guild", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+/home/lena/Development/Projects/Python/disnake/disnake/invite.py
+  /home/lena/Development/Projects/Python/disnake/disnake/invite.py:473:26 - error: Could not access item in TypedDict
+    "guild" is not a required key in "Invite", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+/home/lena/Development/Projects/Python/disnake/disnake/member.py
+  /home/lena/Development/Projects/Python/disnake/disnake/member.py:424:25 - error: Could not access item in TypedDict
+    "nick" is not a required key in "GuildMemberUpdateEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/member.py:429:28 - error: Could not access item in TypedDict
+    "pending" is not a required key in "GuildMemberUpdateEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+/home/lena/Development/Projects/Python/disnake/disnake/message.py
+  /home/lena/Development/Projects/Python/disnake/disnake/message.py:1010:19 - error: Could not access item in TypedDict
+    "message_reference" is not a required key in "Message", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/message.py:1016:28 - error: Could not access item in TypedDict
+    "referenced_message" is not a required key in "Message", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/message.py:1034:53 - error: Could not access item in TypedDict
+    "member" is not a required key in "Message", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+/home/lena/Development/Projects/Python/disnake/disnake/raw_models.py
+  /home/lena/Development/Projects/Python/disnake/disnake/raw_models.py:81:48 - error: Could not access item in TypedDict
+    "guild_id" is not a required key in "MessageDeleteEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/raw_models.py:108:48 - error: Could not access item in TypedDict
+    "guild_id" is not a required key in "MessageDeleteBulkEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/raw_models.py:145:48 - error: Could not access item in TypedDict
+    "guild_id" is not a required key in "MessageUpdateEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/raw_models.py:217:48 - error: Could not access item in TypedDict
+    "guild_id" is not a required key in "MessageReactionAddEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/raw_models.py:217:48 - error: Could not access item in TypedDict
+    "guild_id" is not a required key in "MessageReactionRemoveEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/raw_models.py:242:48 - error: Could not access item in TypedDict
+    "guild_id" is not a required key in "MessageReactionRemoveAllEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/raw_models.py:274:48 - error: Could not access item in TypedDict
+    "guild_id" is not a required key in "MessageReactionRemoveEmojiEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/raw_models.py:300:54 - error: Could not access item in TypedDict
+    "application_id" is not a required key in "IntegrationDeleteEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/raw_models.py:425:48 - error: Could not access item in TypedDict
+    "guild_id" is not a required key in "TypingStartEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+/home/lena/Development/Projects/Python/disnake/disnake/role.py
+  /home/lena/Development/Projects/Python/disnake/disnake/role.py:285:34 - error: Could not access item in TypedDict
+    "tags" is not a required key in "Role", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+/home/lena/Development/Projects/Python/disnake/disnake/state.py
+  /home/lena/Development/Projects/Python/disnake/disnake/state.py:499:16 - error: Condition will always evaluate to False since the types "Localized" and "str" have no overlap (reportUnnecessaryComparison)
+  /home/lena/Development/Projects/Python/disnake/disnake/state.py:507:16 - error: Condition will always evaluate to False since the types "Localized" and "str" have no overlap (reportUnnecessaryComparison)
+  /home/lena/Development/Projects/Python/disnake/disnake/state.py:598:41 - error: Could not access item in TypedDict
+    "guild_id" is not a required key in "Message", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/state.py:598:41 - error: Could not access item in TypedDict
+    "guild_id" is not a required key in "TypingStartEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/state.py:1079:41 - error: Could not access item in TypedDict
+    "guild_id" is not a required key in "ChannelPinsUpdateEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+  /home/lena/Development/Projects/Python/disnake/disnake/state.py:1167:40 - error: Could not access item in TypedDict
+    "channel_ids" is not a required key in "ThreadListSyncEvent", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+/home/lena/Development/Projects/Python/disnake/disnake/threads.py
+  /home/lena/Development/Projects/Python/disnake/disnake/threads.py:204:22 - error: Could not access item in TypedDict
+    "member" is not a required key in "Thread", so access may result in runtime exception (reportTypedDictNotRequiredAccess)
+/home/lena/Development/Projects/Python/disnake/disnake/voice_client.py
+  /home/lena/Development/Projects/Python/disnake/disnake/voice_client.py:525:15 - error: "nacl" is possibly unbound (reportPossiblyUnboundVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/voice_client.py:532:15 - error: "nacl" is possibly unbound (reportPossiblyUnboundVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/voice_client.py:533:17 - error: "nacl" is possibly unbound (reportPossiblyUnboundVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/voice_client.py:533:35 - error: "nacl" is possibly unbound (reportPossiblyUnboundVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/voice_client.py:538:15 - error: "nacl" is possibly unbound (reportPossiblyUnboundVariable)
+/home/lena/Development/Projects/Python/disnake/disnake/ext/commands/converter.py
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/converter.py:1158:49 - error: Cannot access attribute "__name__" for class "Converter[Unknown]*"
+    Attribute "__name__" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/converter.py:1158:49 - error: Cannot access attribute "__name__" for class "object*"
+    Attribute "__name__" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/converter.py:1241:62 - error: Unnecessary "# type: ignore" comment
+/home/lena/Development/Projects/Python/disnake/disnake/ext/commands/ctx_menus_core.py
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/ctx_menus_core.py:83:30 - error: Cannot access attribute "_cast" for class "type[Localized]"
+    Attribute "_cast" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/ctx_menus_core.py:189:30 - error: Cannot access attribute "_cast" for class "type[Localized]"
+    Attribute "_cast" is unknown (reportAttributeAccessIssue)
+/home/lena/Development/Projects/Python/disnake/disnake/ext/commands/interaction_bot_base.py
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/interaction_bot_base.py:318:27 - error: Cannot access attribute "localize" for class "ApplicationCommand"
+    Attribute "localize" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/interaction_bot_base.py:350:30 - error: Cannot access attribute "localize" for class "ApplicationCommand"
+    Attribute "localize" is unknown (reportAttributeAccessIssue)
+/home/lena/Development/Projects/Python/disnake/disnake/ext/commands/params.py
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/params.py:62:30 - error: "LocalizationValue" is unknown import symbol (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/params.py:522:30 - error: Cannot access attribute "_cast" for class "type[Localized]"
+    Attribute "_cast" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/params.py:526:30 - error: Cannot access attribute "_cast" for class "type[Localized]"
+    Attribute "_cast" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/params.py:819:37 - error: No parameter named "data" (reportCallIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/params.py:820:44 - error: No parameter named "data" (reportCallIssue)
+/home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:48:12 - error: Condition will always evaluate to False since the types "Localized" and "str" have no overlap (reportUnnecessaryComparison)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:146:37 - error: "name_loc" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:150:18 - error: "name_loc" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:189:15 - error: "LocalizedOptional" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:190:22 - error: "LocalizedOptional" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:269:15 - error: "LocalizedOptional" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:270:22 - error: "LocalizedOptional" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:275:30 - error: Cannot access attribute "_cast" for class "type[Localized]"
+    Attribute "_cast" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:285:30 - error: Cannot access attribute "_cast" for class "type[Localized]"
+    Attribute "_cast" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:334:16 - error: Expression of type "Localized" is incompatible with return type "str"
+    "Localized" is incompatible with "str" (reportReturnType)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:431:15 - error: "LocalizedOptional" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:432:22 - error: "LocalizedOptional" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:442:30 - error: Cannot access attribute "_cast" for class "type[Localized]"
+    Attribute "_cast" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:455:30 - error: Cannot access attribute "_cast" for class "type[Localized]"
+    Attribute "_cast" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:521:15 - error: "LocalizedOptional" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:522:22 - error: "LocalizedOptional" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:586:15 - error: "LocalizedOptional" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:749:11 - error: "LocalizedOptional" is not defined (reportUndefinedVariable)
+  /home/lena/Development/Projects/Python/disnake/disnake/ext/commands/slash_core.py:750:18 - error: "LocalizedOptional" is not defined (reportUndefinedVariable)
+/home/lena/Development/Projects/Python/disnake/disnake/interactions/base.py
+  /home/lena/Development/Projects/Python/disnake/disnake/interactions/base.py:1293:43 - error: Cannot access attribute "string" for class "Localized"
+    Attribute "string" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/interactions/base.py:1296:23 - error: Cannot access attribute "localize" for class "OptionChoice"
+    Attribute "localize" is unknown (reportAttributeAccessIssue)
+  /home/lena/Development/Projects/Python/disnake/disnake/interactions/base.py:1908:31 - error: Argument of type "Guild | Object" cannot be assigned to parameter "guild" of type "Guild" in function "__init__"
+    Type "Guild | Object" is incompatible with type "Guild"
+      "Object" is incompatible with "Guild" (reportArgumentType)
+/home/lena/Development/Projects/Python/disnake/disnake/ui/button.py
+  /home/lena/Development/Projects/Python/disnake/disnake/ui/button.py:102:15 - error: Type annotation for "self" parameter of "__init__" method cannot contain class-scoped type varaiables (reportInvalidTypeVarUse)
+/home/lena/Development/Projects/Python/disnake/disnake/ui/item.py
+  /home/lena/Development/Projects/Python/disnake/disnake/ui/item.py:99:24 - error: Type annotation for "self" parameter of "__init__" method cannot contain class-scoped type varaiables (reportInvalidTypeVarUse)
+/home/lena/Development/Projects/Python/disnake/disnake/ui/select/channel.py
+  /home/lena/Development/Projects/Python/disnake/disnake/ui/select/channel.py:83:15 - error: Type annotation for "self" parameter of "__init__" method cannot contain class-scoped type varaiables (reportInvalidTypeVarUse)
+/home/lena/Development/Projects/Python/disnake/disnake/ui/select/mentionable.py
+  /home/lena/Development/Projects/Python/disnake/disnake/ui/select/mentionable.py:79:15 - error: Type annotation for "self" parameter of "__init__" method cannot contain class-scoped type varaiables (reportInvalidTypeVarUse)
+/home/lena/Development/Projects/Python/disnake/disnake/ui/select/role.py
+  /home/lena/Development/Projects/Python/disnake/disnake/ui/select/role.py:77:15 - error: Type annotation for "self" parameter of "__init__" method cannot contain class-scoped type varaiables (reportInvalidTypeVarUse)
+/home/lena/Development/Projects/Python/disnake/disnake/ui/select/string.py
+  /home/lena/Development/Projects/Python/disnake/disnake/ui/select/string.py:117:15 - error: Type annotation for "self" parameter of "__init__" method cannot contain class-scoped type varaiables (reportInvalidTypeVarUse)
+/home/lena/Development/Projects/Python/disnake/disnake/ui/select/user.py
+  /home/lena/Development/Projects/Python/disnake/disnake/ui/select/user.py:78:15 - error: Type annotation for "self" parameter of "__init__" method cannot contain class-scoped type varaiables (reportInvalidTypeVarUse)
+154 errors, 0 warnings, 0 informations 
